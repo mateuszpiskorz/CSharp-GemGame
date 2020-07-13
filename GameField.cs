@@ -13,10 +13,6 @@ namespace GemGame
         private Box[,] boxes = new Box[GAME_ROW, GAME_COL];
         private static ConsoleColor[] BoxColors = { ConsoleColor.Yellow, ConsoleColor.Red, ConsoleColor.Magenta, ConsoleColor.Green, ConsoleColor.Blue };
 
-        private const char CHARBASE = '\u2588';
-        private const char CHARLIGHT = '\u2591';
-        private const char CHARMEDIUM = '\u2592';
-        private const char CHARDARK = '\u2593';
 
         public Box this[int i, int j]
         {
@@ -96,22 +92,22 @@ namespace GemGame
                 {
                     if (boxesToRemove[x, y] == true)
                     {
-                        this.boxes[x, y].initBox(CHARDARK); 
+                        this.boxes[x, y].initBox(Chars.DARKCHAR); 
                         this.boxes[x, y].DrawBox();
 
                         Thread.Sleep(50);
-                        this.boxes[x, y].initBox(CHARMEDIUM);   
+                        this.boxes[x, y].initBox(Chars.MEDIUMCHAR);   
                         this.boxes[x, y].DrawBox();
 
                         Thread.Sleep(50);
-                        this.boxes[x, y].initBox(CHARLIGHT);   
+                        this.boxes[x, y].initBox(Chars.LIGHTCHAR);   
                         this.boxes[x, y].DrawBox();
 
                         Thread.Sleep(50);
                         boxes[x, y].Color = ConsoleColor.Black;
 
                         Thread.Sleep(50);
-                        this.boxes[x, y].initBox(CHARBASE); 
+                        this.boxes[x, y].initBox(Chars.MAINCHAR); 
                         this.boxes[x, y].DrawBox();
                     }
                 }

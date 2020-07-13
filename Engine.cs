@@ -9,16 +9,12 @@ namespace GemGame
 {
     class Engine
     {
+        #region Fields
         private const int INITIAL_SCORE = 0;
         private const int NAME_WINDOW_WIDTH = 50;
         private const int NAME_WINDOW_HEIGHT = 10;
         private const int PLAYER_FIELD_WIDTH = 33;
         private const int PLAYER_FIELD_HEIGHT = 46;
-
-        private const char CHARBASE = '\u2588';
-        private const char CHARLIGHT = '\u2591';
-        private const char CHARMEDIUM = '\u2592';
-        private const char CHARDARK = '\u2593';
 
         private const string WINDOW_TITLE = "GEM GAME";
         private  ConsoleColor[] boxColors = { ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Cyan, ConsoleColor.Magenta };
@@ -36,6 +32,7 @@ namespace GemGame
 
         private Player player;
         private static GameField gamefield = new GameField();
+        #endregion
 
         public Engine()
         {
@@ -138,16 +135,16 @@ namespace GemGame
                             {
                                 gamefield[x, y].Color = boxColors[rand.Next(0, boxColors.Length)];
                                 Thread.Sleep(30);
-                                gamefield[x, y].initBox(CHARLIGHT);
+                                gamefield[x, y].initBox(Chars.LIGHTCHAR);
                                 gamefield[x, y].DrawBox();
                                 Thread.Sleep(50);
-                                gamefield[x, y].initBox(CHARMEDIUM);
+                                gamefield[x, y].initBox(Chars.MEDIUMCHAR);
                                 gamefield[x, y].DrawBox();
                                 Thread.Sleep(50);
-                                gamefield[x, y].initBox(CHARDARK);
+                                gamefield[x, y].initBox(Chars.DARKCHAR);
                                 gamefield[x, y].DrawBox();
                                 Thread.Sleep(50);
-                                gamefield[x, y].initBox(CHARBASE);
+                                gamefield[x, y].initBox(Chars.MAINCHAR);
                                 gamefield[x, y].DrawBox();
                             }
                         }
@@ -331,7 +328,7 @@ namespace GemGame
                             Console.SetWindowSize(PLAYER_FIELD_WIDTH, PLAYER_FIELD_HEIGHT);
                             Console.SetBufferSize(PLAYER_FIELD_WIDTH, PLAYER_FIELD_HEIGHT);
                             gamefield = new GameField();
-                            gamefield.InitializeGameField(CHARBASE);
+                            gamefield.InitializeGameField(Chars.MAINCHAR);
                             gamefield.DrawGameField();
                             FallDownAndGenerateGems();
                             this.StartGameLoop();

@@ -6,7 +6,7 @@ namespace GemGame
 {
     class Box
     {
-        const char CHARBASE = '\u2588';
+       
         private int x;
         private int y;
         private char symbol;
@@ -79,7 +79,7 @@ namespace GemGame
         public ConsoleColor Color { get; set; }
         #endregion
 
-        public Box():this(0,0, CHARBASE, ConsoleColor.Black)
+        public Box():this(0,0, Chars.MAINCHAR, ConsoleColor.Black)
         {
         }
 
