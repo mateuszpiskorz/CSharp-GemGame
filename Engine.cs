@@ -44,6 +44,10 @@ namespace GemGame
             this.DrawMenu();
             this.StartMenuLoop();
         }
+        private void DrawInGameMenu()
+        {
+
+        }
 
 
         private void DrawGameWindow(int x, int y, string title)
