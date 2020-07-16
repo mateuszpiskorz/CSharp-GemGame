@@ -46,6 +46,49 @@ namespace GemGame
         }
         private void DrawInGameMenu()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            for (int i = 0; i <= PLAYER_FIELD_WIDTH - 1; i++)
+            {
+                Console.SetCursorPosition(i, 33);
+                Console.Write(Chars.MAINCHAR);
+            }
+            for (int i = 0; i <= PLAYER_FIELD_HEIGHT - 34 - 2; i++)
+            {
+                Console.SetCursorPosition(0, 34 + i);
+                Console.Write(Chars.MAINCHAR);
+                Console.SetCursorPosition(PLAYER_FIELD_WIDTH - 1, 34 + i);
+                Console.Write(Chars.MAINCHAR);
+
+            }
+            for (int i = 0; i <= PLAYER_FIELD_WIDTH - 1; i++)
+            {
+                Console.SetCursorPosition(i, PLAYER_FIELD_HEIGHT - 2);
+                Console.Write(Chars.MAINCHAR);
+            }
+
+            Console.SetCursorPosition(2, 35);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Player: ");
+            Console.SetCursorPosition(2, 36);
+            Console.Write("Score: ");
+            Console.SetCursorPosition(2, 37);
+            Console.Write("Move - ");
+            Console.SetCursorPosition(2, 38);
+            Console.Write("Select Box - ");
+            Console.SetCursorPosition(2, 39);
+            Console.Write("Quit To Menu - ");
+
+            Console.SetCursorPosition(2 + "Player: ".Length, 35);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(player.Name);
+            Console.SetCursorPosition(2 + "Score: ".Length, 36);
+            Console.Write(player.Score);
+            Console.SetCursorPosition(2 + "Move - ".Length, 37);
+            Console.Write("Arrow Keys");
+            Console.SetCursorPosition(2 + "Select Box - ".Length, 38);
+            Console.Write("Enter");
+            Console.SetCursorPosition(2 + "Quit To Menu - ".Length, 39);
+            Console.Write("Esc");
 
         }
 
@@ -331,6 +374,7 @@ namespace GemGame
                             Console.Clear();
                             Console.SetWindowSize(PLAYER_FIELD_WIDTH, PLAYER_FIELD_HEIGHT);
                             Console.SetBufferSize(PLAYER_FIELD_WIDTH, PLAYER_FIELD_HEIGHT);
+                            this.DrawInGameMenu();
                             gamefield = new GameField();
                             gamefield.InitializeGameField(Chars.MAINCHAR);
                             gamefield.DrawGameField();
