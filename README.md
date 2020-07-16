@@ -1,2 +1,5 @@
 # CSharp-GemGame
-Candy Crush like game created using C# language in console. (Personal project)
+**Personal Project
+**Used Technologies: C#
+##Description:
+Candy Crush like game created using C# language in console.
