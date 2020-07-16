@@ -46,6 +46,7 @@ namespace GemGame
         }
         private void DrawInGameMenu()
         {
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             for (int i = 0; i <= PLAYER_FIELD_WIDTH - 1; i++)
             {
@@ -159,8 +160,13 @@ namespace GemGame
                 boxesToRemove = FindBoxesToRemove();
 
                 int gemCount = GetBoxesToRemove(boxesToRemove);
+                int bonus = 1;
+                bonus = gemCount / 30;
+                player.Score += gemCount + gemCount * bonus;
+
 
                 gamefield.DestroyGems(boxesToRemove);
+                
 
                 while (!gamefield.isFull())
                 {
@@ -201,6 +207,8 @@ namespace GemGame
                 Array.Clear(boxesToRemove, 0, boxesToRemove.Length);
 
             } while (!CheckIfEmpty(FindBoxesToRemove()));
+            DrawInGameMenu();
+            gamefield.DrawGameField();
         }
 
         private bool[,] FindBoxesToRemove()
@@ -374,11 +382,13 @@ namespace GemGame
                             Console.Clear();
                             Console.SetWindowSize(PLAYER_FIELD_WIDTH, PLAYER_FIELD_HEIGHT);
                             Console.SetBufferSize(PLAYER_FIELD_WIDTH, PLAYER_FIELD_HEIGHT);
-                            this.DrawInGameMenu();
                             gamefield = new GameField();
                             gamefield.InitializeGameField(Chars.MAINCHAR);
                             gamefield.DrawGameField();
                             FallDownAndGenerateGems();
+                            player.Score = INITIAL_SCORE;
+                            this.DrawInGameMenu();
+                            gamefield.DrawGameField();
                             this.StartGameLoop();
                             menuCommand = true;
                             break;
